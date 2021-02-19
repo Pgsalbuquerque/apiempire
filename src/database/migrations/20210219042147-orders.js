@@ -7,6 +7,15 @@ module.exports = {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
+        allowNull: false,
+      },
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: true,
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: true,
       }
     });
 

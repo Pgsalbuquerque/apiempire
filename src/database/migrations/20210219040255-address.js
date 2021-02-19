@@ -6,6 +6,7 @@ module.exports = {
           type: Sequelize.INTEGER,
           primaryKey: true,
           allowNull: false,
+          autoIncrement: true,
         },
         cep: {
           type: Sequelize.STRING,
@@ -30,6 +31,14 @@ module.exports = {
         district: {
           type: Sequelize.STRING,
           allowNull: false,
+        },
+        created_at: {
+          type: Sequelize.DATE,
+          allowNull: true,
+        },
+        updated_at: {
+          type: Sequelize.DATE,
+          allowNull: true,
         }
       });
 

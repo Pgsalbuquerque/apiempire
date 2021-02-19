@@ -11,7 +11,15 @@ module.exports = {
        percent: {
          type: Sequelize.FLOAT,
          allowNull: false,
-       }
+       },
+       created_at: {
+        type: Sequelize.DATE,
+        allowNull: true,
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: true,
+      }
     });
 
   },

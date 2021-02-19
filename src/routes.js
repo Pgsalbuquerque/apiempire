@@ -2,8 +2,8 @@ const { Router } = require('express');
 
 const routes = new Router();
 
-routes.get("/", (req, res) => {
-    return res.send({"Configuração": "Sucesso"})
-});
+const EmployeeController = require("./app/controllers/EmployeeController")
+
+routes.post("/", EmployeeController.store);
 
 module.exports = routes;

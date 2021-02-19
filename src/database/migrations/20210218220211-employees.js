@@ -6,6 +6,7 @@ module.exports = {
       cpf: {
         type: Sequelize.STRING,
         primaryKey: true,
+        allowNull: false,
       },
       name: {
         type: Sequelize.STRING,
@@ -34,6 +35,14 @@ module.exports = {
       charge: {
         type: Sequelize.STRING,
         allowNull: false,
+      },
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: true,
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: true,
       }
 
     });
