@@ -7,7 +7,6 @@ module.exports = {
         type: Sequelize.STRING,
         primaryKey: true,
         allowNull: false,
-        autoIncrement: true,
        },
        percent: {
          type: Sequelize.FLOAT,
