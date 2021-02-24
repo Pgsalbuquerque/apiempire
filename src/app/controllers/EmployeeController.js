@@ -10,15 +10,15 @@ class EmployeeController {
             return res.status(404).send({"message": "Error attributes are missing"})
         }
 
-         const user = await Employee.findOne({cpf})
+         const employee = await Employee.findOne({where: {cpf}})
 
-         if (user) {
-            return res.status(404).send({"message": "Error user exists"})
+         if (employee) {
+            return res.status(404).send({"message": "Error employee exists"})
          }
 
         await Employee.create({cpf, name, email, telephone1, telephone2, telephone3, pay, charge});
 
-        return res.status(200).send({"User message:": `User Created ${name}`})
+        return res.status(200).send({"message:": `Employee Created ${name}`})
 
     }
 
@@ -29,25 +29,25 @@ class EmployeeController {
             return res.status(404).send({"message": "Error cpf are missing"})
         }
 
-        const user = await Employee.findOne({cpf})
+        const employee = await Employee.findOne({where: {cpf}})
 
-        if (user == null)  {
-            return res.status(404).send({"message": "Error user not exists"})
+        if (employee == null)  {
+            return res.status(404).send({"message": "Error employee not exists"})
          }
 
         const {name, email, telephone1, telephone2, telephone3, pay, charge} = req.body;
         
-        if (name) user.name = name;
-        if (email) user.email = email;
-        if (telephone1) user.telephone1 = telephone1;
-        if (telephone2) user.telephone2 = telephone2;
-        if (telephone3) user.telephone3 = telephone3;
-        if (pay) user.pay = pay;
-        if (charge) user.charge = charge;
+        if (name) employee.name = name;
+        if (email) employee.email = email;
+        if (telephone1) employee.telephone1 = telephone1;
+        if (telephone2) employee.telephone2 = telephone2;
+        if (telephone3) employee.telephone3 = telephone3;
+        if (pay) employee.pay = pay;
+        if (charge) employee.charge = charge;
 
-        user.save()
+        employee.save()
 
-        return res.status(200).send({"message": "User has been updated"})
+        return res.status(200).send({"message": "Employee has been updated"})
         
         
 
@@ -61,15 +61,58 @@ class EmployeeController {
             return res.status(404).send({"message": "Error cpf are missing"})
         }
 
-        const user = await Employee.findOne({cpf})
+        const employee = await Employee.findOne({where: {cpf}})
 
-        if (user == null)  {
-            return res.status(404).send({"message": "Error user not exists"})
+        if (employee == null)  {
+            return res.status(404).send({"message": "Error employee not exists"})
          }
 
-        user.destroy();
+        employee.destroy();
 
-        return res.status(200).send({"message": "User has been deleted"})
+        return res.status(200).send({"message": "Employee has been deleted"})
+    }
+
+    async ListALll(req, res) {
+        const employees = await Employee.findAll({attributes: {exclude: ["createdAt", "updatedAt"]}});
+
+        if (!employees) {
+            return res.status(200).send([])
+        }
+
+        return res.status(200).send(employees)
+    }
+
+    async ListOne(req, res) {
+        const {cpf} = req.body
+
+        if (!cpf) return res.status(404).send({"message": "Error cpf are missing"})
+
+        const employee = await Employee.findOne({
+            where: {cpf}, 
+            attributes: {exclude: ["createdAt", "updatedAt"]}
+        })
+
+        if (!employee) return res.status(404).send({"message": "Error employee not exists"})
+
+        return res.status(200).send(employee)
+    }
+
+    async ListByCharge(req, res) {
+        const {charge} = req.body;
+
+        if (!charge) return res.status(404).send({"message": "Error charge are missing"})
+
+        const employees = await Employee.findAll({
+            where: {charge},
+            attributes: {exclude: ["createdAt", "updatedAt"]}
+        });
+
+        if (!employees) {
+            return res.status(200).send([])
+        }
+
+        return res.status(200).send(employees)
+
     }
 }
 
