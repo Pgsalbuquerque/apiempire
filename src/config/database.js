@@ -1,7 +1,7 @@
 module.exports = {
-    dialect: 'mysql',
+    dialect: 'postgres',
     host: 'localhost',
-    username: 'root',
+    username: 'postgres',
     password: 'pgsa',
     database: 'empiredb',
     define: {
