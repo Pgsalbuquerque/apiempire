@@ -45,7 +45,7 @@ class EmployeeController {
         if (pay) employee.pay = pay;
         if (charge) employee.charge = charge;
 
-        employee.save()
+        await employee.save()
 
         return res.status(200).send({"message": "Employee has been updated"})
         
@@ -67,12 +67,12 @@ class EmployeeController {
             return res.status(404).send({"message": "Error employee not exists"})
          }
 
-        employee.destroy();
+        await employee.destroy();
 
         return res.status(200).send({"message": "Employee has been deleted"})
     }
 
-    async ListALll(req, res) {
+    async ListAll(req, res) {
         const employees = await Employee.findAll({attributes: {exclude: ["createdAt", "updatedAt"]}});
 
         if (!employees) {
