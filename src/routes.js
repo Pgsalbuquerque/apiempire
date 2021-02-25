@@ -7,6 +7,7 @@ const ProviderController = require("./app/controllers/ProviderController");
 const ClientController = require("./app/controllers/ClientController");
 const AddressController = require("./app/controllers/AddressController");
 const FeedbackController = require("./app/controllers/FeedbackController");
+const OffController = require("./app/controllers/OffController");
 
 routes.post("/employee", EmployeeController.store);
 
@@ -57,6 +58,14 @@ routes.delete("/feedback", FeedbackController.delete);
 routes.get("/feedback/listall", FeedbackController.ListAll);
 
 routes.get("/feedback/findbyemployeecpf", FeedbackController.findByEmployeeCpf);
+
+routes.post("/off", OffController.store);
+
+routes.delete("/off", OffController.delete);
+
+routes.get("/off/listall", OffController.ListAll);
+
+routes.get("/off/findbyid", OffController.findById);
 
 
 

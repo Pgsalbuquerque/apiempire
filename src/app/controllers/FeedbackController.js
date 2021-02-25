@@ -31,7 +31,7 @@ class FeedbackController {
     }
 
     async ListAll (req, res) {
-        const feedbacks = await Feedback.findAll();
+        const feedbacks = await Feedback.findAll({attributes: {exclude: ["createdAt", "updatedAt"]}});
 
         if (!feedbacks) {
             return res.status(200).send([]);
@@ -49,7 +49,7 @@ class FeedbackController {
 
         if (!employee) return res.status(404).send({"message": "Error employee not exists"});
 
-        const feedbacks = await Feedback.findAll({where: {employee_cpf}});
+        const feedbacks = await Feedback.findAll({where: {employee_cpf}, attributes: {exclude: ["createdAt", "updatedAt"]}});
 
         if (!feedbacks) {
             return res.status(200).send([]);
