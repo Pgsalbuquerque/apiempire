@@ -6,8 +6,9 @@ const Employee = require("../app/models/Employee");
 const Provider = require("../app/models/Provider");
 const Client = require("../app/models/Client");
 const Address = require("../app/models/Address");
+const Feedback = require("../app/models/Feedback");
 
-const models = [Employee, Provider, Client, Address];
+const models = [Employee, Provider, Client, Address, Feedback];
 
 class Database {
     constructor(){

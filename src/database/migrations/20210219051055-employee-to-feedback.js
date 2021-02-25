@@ -8,7 +8,7 @@ module.exports = {
       references: {model: 'employees', key: "cpf"},
       onUpdate: 'CASCADE',
       onDelete: 'SET NULL',
-      allowNull: true,
+      allowNull: false,
     }
     );
 
