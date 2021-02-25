@@ -4,6 +4,7 @@ const routes = new Router();
 
 const EmployeeController = require("./app/controllers/EmployeeController")
 const ProviderController = require("./app/controllers/ProviderController")
+const ClientController = require("./app/controllers/ClientController")
 
 routes.post("/employee", EmployeeController.store);
 
@@ -26,5 +27,15 @@ routes.put("/provider", ProviderController.put);
 routes.get("/provider/listall", ProviderController.ListAll);
 
 routes.get("/provider/listone", ProviderController.ListOne);
+
+routes.post("/client", ClientController.store);
+
+routes.delete("/client", ClientController.delete);
+
+routes.put("/client", ClientController.put);
+
+routes.get("/client/listall", ClientController.ListAll);
+
+routes.get("/client/listone", ClientController.ListOne);
 
 module.exports = routes;
