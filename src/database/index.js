@@ -2,11 +2,12 @@ const Sequelize = require('sequelize');
 
 const databaseConfig = require('../config/database');
 
-const Employee = require("../app/models/Employee")
-const Provider = require("../app/models/Provider")
-const Client = require("../app/models/Client")
+const Employee = require("../app/models/Employee");
+const Provider = require("../app/models/Provider");
+const Client = require("../app/models/Client");
+const Address = require("../app/models/Address");
 
-const models = [Employee, Provider, Client];
+const models = [Employee, Provider, Client, Address];
 
 class Database {
     constructor(){

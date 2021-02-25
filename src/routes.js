@@ -2,9 +2,10 @@ const { Router } = require('express');
 
 const routes = new Router();
 
-const EmployeeController = require("./app/controllers/EmployeeController")
-const ProviderController = require("./app/controllers/ProviderController")
-const ClientController = require("./app/controllers/ClientController")
+const EmployeeController = require("./app/controllers/EmployeeController");
+const ProviderController = require("./app/controllers/ProviderController");
+const ClientController = require("./app/controllers/ClientController");
+const AddressController = require("./app/controllers/AddressController");
 
 routes.post("/employee", EmployeeController.store);
 
@@ -37,5 +38,15 @@ routes.put("/client", ClientController.put);
 routes.get("/client/listall", ClientController.ListAll);
 
 routes.get("/client/listone", ClientController.ListOne);
+
+routes.post("/address", AddressController.store);
+
+routes.delete("/address", AddressController.delete);
+
+routes.put("/address", AddressController.put);
+
+routes.get("/client/listbyid", AddressController.ListById);
+
+routes.get("/client/listbystreet", AddressController.ListByStreet);
 
 module.exports = routes;
