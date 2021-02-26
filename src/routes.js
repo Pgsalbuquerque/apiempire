@@ -8,6 +8,9 @@ const ClientController = require("./app/controllers/ClientController");
 const AddressController = require("./app/controllers/AddressController");
 const FeedbackController = require("./app/controllers/FeedbackController");
 const OffController = require("./app/controllers/OffController");
+const ProductController = require("./app/controllers/ProductController");
+const OrderController = require("./app/controllers/OrderController");
+const PurchaseController = require("./app/controllers/PurchaseController");
 
 routes.post("/employee", EmployeeController.store);
 
@@ -67,6 +70,33 @@ routes.get("/off/listall", OffController.ListAll);
 
 routes.get("/off/findbyid", OffController.findById);
 
+routes.post("/product", ProductController.store);
+
+routes.put("/product", ProductController.put);
+
+routes.delete("/product", ProductController.delete);
+
+routes.get("/product/listall", ProductController.ListAll);
+
+routes.get("/product/listbyname", ProductController.ListByName);
+
+routes.get("/product/listbyvalue", ProductController.ListByValue);
+
+routes.post("/order", OrderController.store);
+
+routes.delete("/order", OrderController.delete);
+
+routes.get("/order/listall", OrderController.ListAll);
+
+routes.get("/order/listbyattributes", OrderController.ListByAttributes);
+
+routes.post("/purchase", PurchaseController.store);
+
+routes.delete("/purchase", PurchaseController.delete);
+
+routes.get("/purchase/listall", PurchaseController.ListAll);
+
+routes.get("/purchase/listbyattributes", PurchaseController.ListByAttributes);
 
 
 module.exports = routes;
