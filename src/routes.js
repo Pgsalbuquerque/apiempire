@@ -50,9 +50,9 @@ routes.delete("/address", AddressController.delete);
 
 routes.put("/address", AddressController.put);
 
-routes.get("/client/listbyid", AddressController.ListById);
+routes.get("/address/listbyid", AddressController.ListById);
 
-routes.get("/client/listbystreet", AddressController.ListByStreet);
+routes.get("/address/listbystreet", AddressController.ListByStreet);
 
 routes.post("/feedback", FeedbackController.store);
 
